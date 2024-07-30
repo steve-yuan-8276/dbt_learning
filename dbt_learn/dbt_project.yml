@@ -18,6 +18,9 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
+# Custom folder for attachments (not used by dbt, jst for reference)
+# attachments-paths: "attachments"
+
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
@@ -36,3 +39,7 @@ models:
       +materialized: table
     src:
       +materialized: ephemeral
+
+# Adding the global variable to handle surrogate key nulls
+vars:
+  surrogate_key_treat_nulls_as_empty_strings: True
